@@ -1,6 +1,7 @@
 import style from './index.module.less'
-import girl from '/src/assets/girl.jpeg'
+import logo from '@/assets/logo.png'
 import close from '@/assets/close.png'
+import indexLogo from '@/assets/indexLogo.png'
 import backGround from '@/assets/loginBack.png'
 import password from '@/assets/password.png'
 import phone from '@/assets/phone.png'
@@ -29,10 +30,11 @@ const Index = () => {
                 background: `url(${backGround})`
             }}>
                 <div className={style.titleBox}>
-                    <img src={girl} alt=""/>
-                    <div className={style.title}>
-                        绘唐创作平台
-                    </div>
+                    <img src={logo} alt=""/>
+                    <img src={indexLogo} alt=""/>
+                    {/*<div className={style.title}>*/}
+                    {/*    绘唐创作平台*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <div className={style.right}>

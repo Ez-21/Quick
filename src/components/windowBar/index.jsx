@@ -7,19 +7,29 @@ import {Modal} from 'antd';
 import {
     minWindow,
     maxWindow,
-    closeWindow
+    closeWindow,
+    setPosition
 } from '@/func'
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState,useRef} from "react";
+// 监听拖拽事件
 
 const App = ({children}) => {
+    const barRef = useRef()
     const [closeStatus, SetCloseStatus] = useState(false)
     const [color, SetColor] = useState('black')
     useLayoutEffect(() => {
         changeBarBackGround()
     }, [window.location.pathname])
-    useEffect(() => {
-        changeBarBackGround()
-    }, []);
+    // barRef.current?.addEventListener('dragstart', (event) => {
+    //     console.log(event,'e')
+    //     setPosition(event.pageX,event.pageX)
+    // });
+    //     barRef.current?.addEventListener('dragend', (event) => {
+    //         console.log(event,'e')
+
+
+    //         setPosition(event.pageX,event.pageX)
+    //     });
     function changeBarBackGround() {
         console.log(location.pathname)
         if (location.pathname === '/') {
@@ -31,16 +41,22 @@ const App = ({children}) => {
         }
 
     }
-
+    function checkOut(){
+        if(location.pathname==('/index/gpt')){
+            return
+        }else{
+            maxWindow()
+        }
+    }
     return (
-        <div className={style.box} style={{
+        <div data-tauri-drag-region={true}  className={style.box} ref={barRef} style={{
             background: color
-        }} draggable>
+        }} >
             <div className={style.set}>
                 <div onClick={minWindow}>
                     <img src={min} alt=""/>
                 </div>
-                <div onClick={() => location.pathname === '/' ? undefined : maxWindow}>
+                <div onClick={checkOut}>
                     <img src={max} alt=""/>
                 </div>
                 <div onClick={() => SetCloseStatus(true)}>

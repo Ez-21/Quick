@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {setWindowSize, imgRequire} from "@/func/index.js";
+import {setWindowSize, getImageUrl,setWindowCenter} from "@/func/index.js";
 import {Outlet, useNavigate} from 'react-router-dom'
 import style from './index.module.less'
 import girl from '@/assets/logo.png'
@@ -14,29 +14,36 @@ const App = () => {
             id: 1,
             path: '/index/home',
             label: '首页',
-            imgUrl: imgRequire('home.png')
+            imgUrl: getImageUrl('home')
         },
         {
             id: 2,
             path: '/index/gpt',
             label: '助手',
-            imgUrl: imgRequire('home.png')
+            imgUrl: getImageUrl('gpt')
 
         },
         {
             id: 3,
             path: '/index/setting',
             label: '配置',
-            imgUrl: imgRequire('home.png')
+            imgUrl: getImageUrl('setting')
+        },
+        {
+            id: 4,
+            path: '/index/mine',
+            label: '我的',
+            imgUrl: getImageUrl('mine')
 
         }
     ])
     const ck = (item) => {
-        setTabKey(val => item.id)
+        setTabKey(item.id)
         goPage(item.path)
     }
     useEffect(() => {
         setWindowSize(1440, 750)
+        // setWindowCenter()
     }, [])
     return (
         <div className={style.box}>

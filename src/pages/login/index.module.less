@@ -11,18 +11,18 @@ input[type='checkbox'] :checked{
 }
 .titleBox {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 220px;
   height: 56px;
-
+  justify-content: flex-start;
   .title {
     margin-left: 20px;
     font-size: 24px;
     font-weight: 500;
   }
 
-  img {
+  :first-child {
+    margin-right: 11px;
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -31,8 +31,8 @@ input[type='checkbox'] :checked{
 
 .left {
   width: 50%;
-  padding-top: 26px;
-  padding-left: 26px;
+  padding-top: 16px;
+  padding-left: 16px;
 }
 
 .right {
@@ -43,8 +43,8 @@ input[type='checkbox'] :checked{
 
   .close {
     position: fixed;
-    right: 26px;
-    top: 26px;
+    right: 16px;
+    top: 16px;
     cursor: pointer;
   }
 
